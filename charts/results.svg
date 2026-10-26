@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="174" viewBox="0 0 760 174" role="img" aria-label="Paper result of every session with a final valuation" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+<text x="230" y="18" font-size="13" fill="#768390">What the $20 became: every session with a final valuation (start, UTC)</text>
+<rect x="230" y="26" width="10" height="10" fill="#57ab5a"/><rect x="242" y="26" width="10" height="10" fill="#e5534b"/><text x="257" y="35" font-size="11" fill="#768390">Grok trading alone</text><rect x="370" y="26" width="10" height="10" fill="#8b949e"/><text x="385" y="35" font-size="11" fill="#768390">hybrid: a local model decided</text>
+<text x="222" y="61" font-size="12" fill="#768390" text-anchor="end">10-25 16:50 grok, model unrecorded</text>
+<rect x="289.4" y="50" width="180.6" height="14" fill="#e5534b"/>
+<text x="475.0" y="61" font-size="11" fill="#768390" text-anchor="start">-$0.51 ($19.48)</text>
+<text x="222" y="91" font-size="12" fill="#768390" text-anchor="end">10-25 18:49 qwen2.5:7b (hybrid)</text>
+<rect x="338.5" y="80" width="131.5" height="14" fill="#8b949e"/>
+<text x="475.0" y="91" font-size="11" fill="#768390" text-anchor="start">-$0.37 ($19.62)</text>
+<text x="222" y="121" font-size="12" fill="#768390" text-anchor="end">10-25 21:54 grok-4.7</text>
+<rect x="250.0" y="110" width="220.0" height="14" fill="#e5534b"/>
+<text x="475.0" y="121" font-size="11" fill="#768390" text-anchor="start">-$0.62 ($19.37)</text>
+<text x="222" y="151" font-size="12" fill="#768390" text-anchor="end">10-25 23:33 grok-4.3</text>
+<rect x="367.7" y="140" width="102.3" height="14" fill="#e5534b"/>
+<text x="475.0" y="151" font-size="11" fill="#768390" text-anchor="start">-$0.29 ($19.71)</text>
+<line x1="470" y1="44" x2="470" y2="168" stroke="#768390" stroke-width="1"/>
+</svg>

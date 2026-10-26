@@ -1,0 +1,15 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+The data, reports and charts in this repository (everything outside the scripts/ folder) are
+licensed under the Creative Commons Attribution 4.0 International License.
+
+You may copy, share and adapt them for any purpose, including commercial use, as long as you
+give appropriate credit ("Grok Trading Research, Myrhex", with a link to this repository),
+provide a link to the license, and indicate if you made changes.
+
+Summary:      https://creativecommons.org/licenses/by/4.0/
+Legal code:   https://creativecommons.org/licenses/by/4.0/legalcode
+
+Market data inside the session files comes from third-party services (Jupiter, DexScreener,
+GeckoTerminal, RugCheck, Hyperliquid and others) and stays subject to their terms. The scripts/
+folder is licensed separately, under the MIT License (see LICENSE-CODE).

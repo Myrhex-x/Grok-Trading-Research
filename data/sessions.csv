@@ -1,0 +1,11 @@
+id,kind,setup,model,brain,started,finished,complete,start_value_usd,end_value_usd,paper_pnl_usd,paper_pnl_pct,in_profit,checkins,drills_run,drills_passed,buys,sells,closed_trades,mistakes,practice_mode,stopped_reason
+2026-10-25T14-45-34Z,training,grok,,,2026-10-25T14:45:34Z,,false,19.992217,,,,,4,8,5,0,0,0,4,false,
+2026-10-25T15-11-56Z,training,grok,,,2026-10-25T15:11:56Z,,false,19.99195,,,,,8,8,8,0,0,0,0,false,
+2026-10-25T16-02-30Z,training,grok,,,2026-10-25T16:02:30Z,,false,19.991712,,,,,1,8,8,1,0,0,0,true,
+2026-10-25T16-50-24Z,training,grok,,,2026-10-25T16:50:24Z,2026-10-25T18:19:11Z,true,19.991094,19.483718,-0.507375,-2.538,false,16,8,8,6,0,4,10,true,
+2026-10-25T18-27-56Z,training,hybrid,qwen2.5:7b,Hybrid: qwen2.5:7b,2026-10-25T18:27:56Z,,false,19.990515,,,,,1,0,0,0,0,0,47,true,
+2026-10-25T18-49-13Z,training,hybrid,qwen2.5:7b,Hybrid: qwen2.5:7b,2026-10-25T18:49:13Z,2026-10-25T19:02:31Z,true,19.991779,19.622392,-0.369388,-1.848,false,3,0,0,1,0,1,6,true,
+2026-10-25T20-58-36Z,training,grok,grok-4.7,Grok: grok-4.7,2026-10-25T20:58:36Z,,false,19.99168,,,,,4,13,13,2,0,0,0,true,
+2026-10-25T21-30-43Z,training,grok,grok-4.7,Grok: grok-4.7,2026-10-25T21:30:43Z,,false,19.992307,,,,,4,0,0,2,0,0,0,true,
+2026-10-25T21-54-42Z,training,grok,grok-4.7,Grok: grok-4.7,2026-10-25T21:54:42Z,2026-10-25T23:05:19Z,true,19.991898,19.374004,-0.617894,-3.091,false,12,13,13,6,1,4,1,true,
+2026-10-25T23-33-51Z,overnight,grok,grok-4.3,Grok: grok-4.3,2026-10-25T23:33:51Z,2026-10-26T09:33:55Z,true,19.992779,19.705577,-0.287202,-1.437,false,36,0,0,2,0,1,20,false,The test's time is up.

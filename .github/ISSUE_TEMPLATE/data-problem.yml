@@ -1,0 +1,27 @@
+name: Report a data problem
+description: Something in the data looks wrong, missing, or shouldn't be public.
+title: "Data: "
+labels: ["data"]
+body:
+  - type: input
+    id: session
+    attributes:
+      label: Session id
+      placeholder: 2026-10-25T23-33-51Z
+  - type: input
+    id: where
+    attributes:
+      label: File, and row or field
+      placeholder: data/trades.csv, row 12
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong
+    validations:
+      required: true
+  - type: checkboxes
+    id: personal
+    attributes:
+      label: Personal data
+      options:
+        - label: This is about personal data that shouldn't be public. (Say where it is, but please don't repeat it here.)

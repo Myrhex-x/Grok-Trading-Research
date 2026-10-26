@@ -1,0 +1,457 @@
+{
+  "name": "grok-trading-research",
+  "title": "Grok Trading Research",
+  "description": "Can Grok, trading alone with $20, make a profit? Every session, check-in, tool call, trade and result from Gambit, a private macOS app where Grok trades a $20 paper account at live prices.",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "resources": [
+    {
+      "name": "sessions",
+      "path": "data/sessions.csv",
+      "description": "One row per session.",
+      "format": "csv",
+      "rows": 10,
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "Session id: its start time in UTC."
+          },
+          {
+            "name": "kind",
+            "type": "string",
+            "description": "training (drills and practice check-ins) or overnight (unattended, profit only)."
+          },
+          {
+            "name": "setup",
+            "type": "string",
+            "description": "grok (Grok decides everything) or hybrid (a local model decides; see METHODOLOGY.md)."
+          },
+          {
+            "name": "model",
+            "type": "string",
+            "description": "The model doing the thinking; empty if not recorded."
+          },
+          {
+            "name": "brain",
+            "type": "string",
+            "description": "The setup as the app labels it."
+          },
+          {
+            "name": "started",
+            "type": "string",
+            "description": "Start time (UTC)."
+          },
+          {
+            "name": "finished",
+            "type": "string",
+            "description": "End time (UTC); empty if the session was stopped before writing it."
+          },
+          {
+            "name": "complete",
+            "type": "boolean",
+            "description": "Whether the session recorded a final valuation."
+          },
+          {
+            "name": "start_value_usd",
+            "type": "number",
+            "description": "Paper bankroll at the start."
+          },
+          {
+            "name": "end_value_usd",
+            "type": "number",
+            "description": "Paper bankroll at the end, open positions at market value."
+          },
+          {
+            "name": "paper_pnl_usd",
+            "type": "number",
+            "description": "end_value_usd minus start_value_usd: what the trading made or lost."
+          },
+          {
+            "name": "paper_pnl_pct",
+            "type": "number",
+            "description": "paper_pnl_usd as a percentage of the start."
+          },
+          {
+            "name": "in_profit",
+            "type": "boolean",
+            "description": "Whether the bankroll ended above where it started; empty without a final valuation."
+          },
+          {
+            "name": "checkins",
+            "type": "integer",
+            "description": "Check-ins (decision rounds) run."
+          },
+          {
+            "name": "drills_run",
+            "type": "integer",
+            "description": "Scripted drills run."
+          },
+          {
+            "name": "drills_passed",
+            "type": "integer",
+            "description": "Drills passed."
+          },
+          {
+            "name": "buys",
+            "type": "integer",
+            "description": "Buys Grok made in check-ins."
+          },
+          {
+            "name": "sells",
+            "type": "integer",
+            "description": "Sells Grok made in check-ins (stops and take-profits are in closed_trades)."
+          },
+          {
+            "name": "closed_trades",
+            "type": "integer",
+            "description": "Positions closed during the session, by Grok or by a stop."
+          },
+          {
+            "name": "mistakes",
+            "type": "integer",
+            "description": "Mistakes flagged by the app's checker."
+          },
+          {
+            "name": "practice_mode",
+            "type": "boolean",
+            "description": "Whether practice rules asked for small trades every check-in."
+          },
+          {
+            "name": "stopped_reason",
+            "type": "string",
+            "description": "Why the session ended, when recorded."
+          }
+        ]
+      }
+    },
+    {
+      "name": "checkins",
+      "path": "data/checkins.csv",
+      "description": "One row per check-in.",
+      "format": "csv",
+      "rows": 89,
+      "schema": {
+        "fields": [
+          {
+            "name": "session_id",
+            "type": "string",
+            "description": "Session id."
+          },
+          {
+            "name": "checkin",
+            "type": "integer",
+            "description": "Check-in number within the session."
+          },
+          {
+            "name": "at",
+            "type": "string",
+            "description": "Start time (UTC)."
+          },
+          {
+            "name": "model",
+            "type": "string",
+            "description": "Model."
+          },
+          {
+            "name": "tool_calls",
+            "type": "integer",
+            "description": "Tools called."
+          },
+          {
+            "name": "tools",
+            "type": "string",
+            "description": "Tool names in order, separated by semicolons."
+          },
+          {
+            "name": "research_calls",
+            "type": "integer",
+            "description": "Calls to research_token or get_token."
+          },
+          {
+            "name": "traded",
+            "type": "boolean",
+            "description": "Whether it called a trading tool."
+          },
+          {
+            "name": "scheduled_minutes",
+            "type": "integer",
+            "description": "Minutes until the next check-in that Grok scheduled; empty if it didn't."
+          },
+          {
+            "name": "scheduled_next_check",
+            "type": "boolean",
+            "description": "Whether it called schedule_next_check, as every check-in should."
+          },
+          {
+            "name": "summary",
+            "type": "string",
+            "description": "Grok's closing summary."
+          }
+        ]
+      }
+    },
+    {
+      "name": "tool_calls",
+      "path": "data/tool_calls.csv",
+      "description": "One row per tool call, drills included.",
+      "format": "csv",
+      "rows": 1115,
+      "schema": {
+        "fields": [
+          {
+            "name": "session_id",
+            "type": "string",
+            "description": "Session id."
+          },
+          {
+            "name": "run",
+            "type": "integer",
+            "description": "Run number within the session (drills and check-ins)."
+          },
+          {
+            "name": "run_kind",
+            "type": "string",
+            "description": "check-in, or drill:<name>."
+          },
+          {
+            "name": "call",
+            "type": "integer",
+            "description": "Call number within the run."
+          },
+          {
+            "name": "tool",
+            "type": "string",
+            "description": "Tool name."
+          },
+          {
+            "name": "arguments",
+            "type": "string",
+            "description": "The arguments, as JSON."
+          },
+          {
+            "name": "output_chars",
+            "type": "integer",
+            "description": "Length of what the tool returned (the output itself is in the session file)."
+          },
+          {
+            "name": "error",
+            "type": "boolean",
+            "description": "Whether the tool returned an error."
+          }
+        ]
+      }
+    },
+    {
+      "name": "trades",
+      "path": "data/trades.csv",
+      "description": "Trades Grok made in check-ins (drill trades are simulated and left out).",
+      "format": "csv",
+      "rows": 22,
+      "schema": {
+        "fields": [
+          {
+            "name": "session_id",
+            "type": "string",
+            "description": "Session id."
+          },
+          {
+            "name": "checkin",
+            "type": "integer",
+            "description": "Check-in number."
+          },
+          {
+            "name": "at",
+            "type": "string",
+            "description": "Check-in start time (UTC)."
+          },
+          {
+            "name": "tool",
+            "type": "string",
+            "description": "swap, evm_swap, perps_order or perps_close."
+          },
+          {
+            "name": "side",
+            "type": "string",
+            "description": "buy or sell (or the perps action)."
+          },
+          {
+            "name": "from",
+            "type": "string",
+            "description": "Token sold, as given."
+          },
+          {
+            "name": "to",
+            "type": "string",
+            "description": "Token bought, as given."
+          },
+          {
+            "name": "amount_usd",
+            "type": "number",
+            "description": "Amount asked for, in dollars."
+          },
+          {
+            "name": "bought",
+            "type": "string",
+            "description": "What came back, as the tool reported it."
+          },
+          {
+            "name": "sold",
+            "type": "string",
+            "description": "What went out, as the tool reported it."
+          },
+          {
+            "name": "value_in_usd",
+            "type": "number",
+            "description": "Dollar value in, from the quote."
+          },
+          {
+            "name": "value_out_usd",
+            "type": "number",
+            "description": "Dollar value out, from the quote."
+          },
+          {
+            "name": "price_impact_pct",
+            "type": "number",
+            "description": "Price impact from the quote, in percent."
+          },
+          {
+            "name": "reason",
+            "type": "string",
+            "description": "Grok's stated reason."
+          }
+        ]
+      }
+    },
+    {
+      "name": "closed_trades",
+      "path": "data/closed_trades.csv",
+      "description": "Positions closed during a session, with their result.",
+      "format": "csv",
+      "rows": 10,
+      "schema": {
+        "fields": [
+          {
+            "name": "session_id",
+            "type": "string",
+            "description": "Session id."
+          },
+          {
+            "name": "setup",
+            "type": "string",
+            "description": "grok or hybrid: who was trading."
+          },
+          {
+            "name": "symbol",
+            "type": "string",
+            "description": "Token symbol."
+          },
+          {
+            "name": "amount",
+            "type": "string",
+            "description": "Amount sold."
+          },
+          {
+            "name": "pnl_usd",
+            "type": "number",
+            "description": "Realized profit or loss."
+          },
+          {
+            "name": "exit",
+            "type": "string",
+            "description": "How it was closed (a stop, a take-profit or Grok), when recorded."
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "The line as the app wrote it."
+          }
+        ]
+      }
+    },
+    {
+      "name": "drills",
+      "path": "data/drills.csv",
+      "description": "Scripted drill results.",
+      "format": "csv",
+      "rows": 58,
+      "schema": {
+        "fields": [
+          {
+            "name": "session_id",
+            "type": "string",
+            "description": "Session id."
+          },
+          {
+            "name": "model",
+            "type": "string",
+            "description": "Model."
+          },
+          {
+            "name": "drill",
+            "type": "string",
+            "description": "Drill id."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "What the drill sets up."
+          },
+          {
+            "name": "passed",
+            "type": "boolean",
+            "description": "Whether Grok passed."
+          },
+          {
+            "name": "detail",
+            "type": "string",
+            "description": "The app's verdict."
+          }
+        ]
+      }
+    },
+    {
+      "name": "mistakes",
+      "path": "data/mistakes.csv",
+      "description": "Mistakes the app's checker flagged.",
+      "format": "csv",
+      "rows": 88,
+      "schema": {
+        "fields": [
+          {
+            "name": "session_id",
+            "type": "string",
+            "description": "Session id."
+          },
+          {
+            "name": "at",
+            "type": "string",
+            "description": "Time (UTC)."
+          },
+          {
+            "name": "kind",
+            "type": "string",
+            "description": "Mistake type."
+          },
+          {
+            "name": "detail",
+            "type": "string",
+            "description": "What happened."
+          }
+        ]
+      }
+    },
+    {
+      "name": "sessions-full",
+      "path": "data/sessions/",
+      "description": "Every session in full, one JSON file each: every check-in, every tool call with its arguments and output, drills, mistakes and the playbook lessons added.",
+      "format": "json",
+      "files": 10
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__/
+*.pyc
+# Raw Gambit reports never belong here: they stay in the private inbox.
+training-*.json
+training-*.txt
+inbox/

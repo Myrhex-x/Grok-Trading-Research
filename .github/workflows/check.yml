@@ -1,0 +1,19 @@
+name: Check the data
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Tables and charts match the sessions, and nothing personal is published
+        run: python scripts/research.py check

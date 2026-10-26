@@ -1,0 +1,24 @@
+name: Propose an experiment
+description: A session you'd like to see run, and what it would tell us.
+title: "Experiment: "
+labels: ["experiment"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: The question
+      description: What would this experiment answer?
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Setup
+      description: Model, bankroll, duration, rules. What changes compared with the sessions already here?
+    validations:
+      required: true
+  - type: textarea
+    id: measure
+    attributes:
+      label: What to measure
+      description: Which numbers would answer the question, and what result would surprise you?

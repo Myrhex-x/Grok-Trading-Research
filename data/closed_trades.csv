@@ -1,0 +1,11 @@
+session_id,setup,symbol,amount,pnl_usd,exit,text
+2026-10-25T16-50-24Z,grok,LAUNCH,2671.35,2.55,Trailing stop at $0.001534,"Sold 2,671.35 LAUNCH: +$2.55 (Trailing stop at $0.001534)"
+2026-10-25T16-50-24Z,grok,CATTLEAXE,1968.88,-0.65,Trailing stop at $0.001442,"Sold 1,968.88 CATTLEAXE: -$0.65 (Trailing stop at $0.001442)"
+2026-10-25T16-50-24Z,grok,LAUNCH,2671.35,0.59,Take profit at $0.000845,"Sold 2,671.35 LAUNCH: +$0.59 (Take profit at $0.000845)"
+2026-10-25T16-50-24Z,grok,X,2953,-2.97,Trailing stop at $0.000004084,"Sold 2,953 X: -$2.97 (Trailing stop at $0.000004084)"
+2026-10-25T18-49-13Z,hybrid,LAUNCHCAT,7398.45,-0.32,Trailing stop at $0.000265,"Sold 7,398.45 LAUNCHCAT: -$0.32 (Trailing stop at $0.000265)"
+2026-10-25T21-54-42Z,grok,LAUNCH,2061.42,-0.62,Stop loss at $0.001127,"Sold 2,061.42 LAUNCH: -$0.62 (Stop loss at $0.001127)"
+2026-10-25T21-54-42Z,grok,LAUNCH,1177.75,0.01,Trailing stop at $0.001295,"Sold 1,177.75 LAUNCH: +$0.01 (Trailing stop at $0.001295)"
+2026-10-25T21-54-42Z,grok,HOOKED,2437.52,-0.05,"HOOKED thesis broke: LP lock fell from 100% at entry to 11.6% while price is flat, so exit at scratc…","Sold 2,437.52 HOOKED: -$0.05 (HOOKED thesis broke: LP lock fell from 100% at entry to 11.6% while price is flat, so exit at scratc…)"
+2026-10-25T21-54-42Z,grok,LAUNCH,1177.75,0.33,Take profit at $0.001564,"Sold 1,177.75 LAUNCH: +$0.33 (Take profit at $0.001564)"
+2026-10-25T23-33-51Z,grok,BTC,331.4223,-0.14,Stop loss at $0.006759,Sold 331.4223 BTC: -$0.14 (Stop loss at $0.006759)

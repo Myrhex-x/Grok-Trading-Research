@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this data or these reports, please cite them as below."
+type: dataset
+title: "Grok Trading Research: can Grok, trading alone with $20, make a profit?"
+abstract: >-
+  Grok, used as a tool-calling agent, trades a $20 paper account on its own in Gambit, a private
+  macOS app, with every fill priced at a live quote. The question is whether it can make a profit.
+  The dataset records every session, check-in, tool call (with its output), trade, drill result and
+  flagged mistake, with reports on what the sessions show. It is updated as new sessions finish.
+authors:
+  - name: "Myrhex"
+url: "https://github.com/Myrhex-x/Grok-Trading-Research"
+repository-code: "https://github.com/Myrhex-x/Grok-Trading-Research"
+license: CC-BY-4.0
+version: "2026.10.26"
+date-released: "2026-10-26"
+keywords:
+  - large language models
+  - LLM agents
+  - Grok
+  - algorithmic trading
+  - cryptocurrency
+  - memecoins
+  - Solana
+  - paper trading
+  - agent evaluation
