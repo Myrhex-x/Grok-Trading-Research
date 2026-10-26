@@ -134,7 +134,9 @@ GitHub's **Cite this repository** button reads [`CITATION.cff`](CITATION.cff). I
 
 ## Licence
 
-Data, reports and charts: [CC BY 4.0](LICENSE). Scripts: [MIT](LICENSE-CODE).
+Everything outside the `scripts/` folder (the data, reports and charts) is licensed under [CC BY 4.0](LICENSE). You may copy, share and adapt it for any purpose, including commercial use, as long as you attribute it to "Grok Trading Research, Myrhex" with a link to this repository, link to the licence, and indicate if you made changes. The scripts in `scripts/` are under the [MIT License](LICENSE-CODE).
+
+Market data inside the session files comes from third-party services (Jupiter, DexScreener, GeckoTerminal, RugCheck, Hyperliquid and others) and stays subject to their terms.
 
 ## Not financial advice
 
